@@ -106,7 +106,7 @@ async fn main() {
 
     let mut rollup_block_height = 1;
     let mut block_generation_count = 0;
-    
+
     let mut cumulative_tx_count = 0;
     let mut tx_arrival_log: Vec<(serde_json::Value, u128)> = Vec::new();
 
@@ -217,16 +217,19 @@ async fn main() {
                             })
                             .unwrap_or(0);
                         cumulative_tx_count += tx_list_len;
+
                         println!(
                             "raw_transaction_list 길이: {}, 누적 합: {}, arrival_log 길이: {}",
                             tx_list_len, cumulative_tx_count, tx_arrival_log.len()
                         );
 
+                        /*
                         if let Ok(pretty) = serde_json::to_string_pretty(&response) {
                             println!("Response\n{}", pretty);
                         } else {
                             println!("Response {:?}", response);
                         }
+                        */
 
                         rollup_block_height += 1;
 
